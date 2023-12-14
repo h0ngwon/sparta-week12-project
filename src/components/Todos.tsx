@@ -1,10 +1,11 @@
 import { useQuery } from '@tanstack/react-query';
+import { AxiosError } from 'axios';
 import styled from 'styled-components';
 import { getTodoData } from '../apis/todoApi';
 import TodoItem from './TodoItem';
 
 const Todos = () => {
-	const { data } = useQuery({
+	const { data } = useQuery<Todo[], AxiosError>({
 		queryKey: ['todos'],
 		queryFn: getTodoData,
 	});

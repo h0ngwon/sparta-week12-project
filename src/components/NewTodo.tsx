@@ -23,7 +23,7 @@ const NewTodo = () => {
 	const submitHandler = (e: FormEvent) => {
 		e.preventDefault();
 		addMutation.mutate({ id: uuid(), title: newTodoTitle, isDone: false });
-        setNewTodoTitle('');
+		setNewTodoTitle('');
 	};
 
 	return (
