@@ -9,7 +9,7 @@ const todoApi: Axios = axios.create({
 
 export const getTodoData = async (): Promise<Todo[]> => {
 	try {
-		const res = await todoApi.get<[Todo]>('/todos');
+		const res = await todoApi.get<Todo[]>('/todos');
 		return res.data;
 	} catch (error) {
 		throw error;

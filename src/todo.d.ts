@@ -1,4 +1,4 @@
-type Todo = {
+declare type Todo = {
     id: string,
     title: string,
     isDone: boolean,

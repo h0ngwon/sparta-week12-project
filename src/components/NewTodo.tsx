@@ -8,7 +8,7 @@ const NewTodo = () => {
 	const queryClient = useQueryClient();
 	const [newTodoTitle, setNewTodoTitle] = useState<string>('');
 
-	const newTodoInputHandler = (e: ChangeEvent<HTMLInputElement>) => {
+	const newTodoInputHandler = (e: ChangeEvent<HTMLInputElement>): void => {
 		setNewTodoTitle(e.target.value);
 	};
 
@@ -20,7 +20,7 @@ const NewTodo = () => {
 		},
 	});
 
-	const submitHandler = (e: FormEvent) => {
+	const submitHandler = (e: FormEvent): void => {
 		e.preventDefault();
 		addMutation.mutate({ id: uuid(), title: newTodoTitle, isDone: false });
 		setNewTodoTitle('');

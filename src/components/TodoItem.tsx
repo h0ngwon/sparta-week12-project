@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { removeTodo, updateTodo } from '../apis/todoApi';
 
 const TodoItem = (props: { item: Todo }) => {
@@ -16,7 +16,7 @@ const TodoItem = (props: { item: Todo }) => {
 		},
 	});
 
-	const isDoneHandler = (id: string) => {
+	const isDoneHandler = (id: string): void => {
 		updateMutate.mutate({
 			...props.item,
 			isDone: !isDone,
@@ -33,7 +33,7 @@ const TodoItem = (props: { item: Todo }) => {
 		},
 	});
 
-	const deleteTodoHandler = (id: string) => {
+	const deleteTodoHandler = (id: string): void => {
 		deleteMutate.mutate(id);
 	};
 
@@ -89,7 +89,7 @@ const DoneButton = styled.button`
 	color: white;
 
 	&:hover {
-		background-color: #626f85
+		background-color: #626f85;
 	}
 `;
 
