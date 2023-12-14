@@ -1,13 +1,17 @@
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { ChangeEvent, FormEvent, useState } from 'react';
 import styled from 'styled-components';
 import { v4 as uuid } from 'uuid';
 import { addTodo } from '../apis/todoApi';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 const NewTodo = () => {
 	const queryClient = useQueryClient();
-
 	const [newTodoTitle, setNewTodoTitle] = useState<string>('');
+
+	const newTodoInputHandler = (e: ChangeEvent<HTMLInputElement>) => {
+		setNewTodoTitle(e.target.value);
+	};
+
 	const addMutation = useMutation({
 		mutationKey: ['todos'],
 		mutationFn: addTodo,
@@ -16,13 +20,10 @@ const NewTodo = () => {
 		},
 	});
 
-	const newTodoInputHandler = (e: ChangeEvent<HTMLInputElement>) => {
-		setNewTodoTitle(e.target.value);
-	};
-
 	const submitHandler = (e: FormEvent) => {
 		e.preventDefault();
 		addMutation.mutate({ id: uuid(), title: newTodoTitle, isDone: false });
+        setNewTodoTitle('');
 	};
 
 	return (

@@ -24,3 +24,24 @@ export const addTodo = async (newTodo: Todo): Promise<Todo> => {
 		throw error;
 	}
 };
+
+export const removeTodo = async (id: string): Promise<Todo> => {
+	try {
+		const { data } = await todoApi.delete<Todo>(`/todos/${id}`);
+		return data;
+	} catch (error) {
+		throw error;
+	}
+};
+
+export const updateTodo = async (updateTodoData: Todo): Promise<Todo> => {
+	try {
+		const { data } = await todoApi.patch<Todo>(
+			`/todos/${updateTodoData.id}`,
+			updateTodoData
+		);
+		return data;
+	} catch (error) {
+		throw error;
+	}
+};

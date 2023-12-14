@@ -1,11 +1,9 @@
-import { useQuery, useQueryClient } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 import styled from 'styled-components';
 import { getTodoData } from '../apis/todoApi';
 import TodoItem from './TodoItem';
 
 const Todos = () => {
-	const queryClient = useQueryClient();
-
 	const { data } = useQuery({
 		queryKey: ['todos'],
 		queryFn: getTodoData,

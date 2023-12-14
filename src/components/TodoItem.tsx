@@ -1,13 +1,60 @@
-import styled from 'styled-components';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import styled, { css } from 'styled-components';
+import { removeTodo, updateTodo } from '../apis/todoApi';
 
 const TodoItem = (props: { item: Todo }) => {
-	const { title, isDone } = props.item;
+	const { id, title, isDone } = props.item;
+	const queryClient = useQueryClient();
+
+	const updateMutate = useMutation({
+		mutationKey: ['todos'],
+		mutationFn: updateTodo,
+		onSuccess: () => {
+			queryClient.invalidateQueries({
+				queryKey: ['todos'],
+			});
+		},
+	});
+
+	const isDoneHandler = (id: string) => {
+		updateMutate.mutate({
+			...props.item,
+			isDone: !isDone,
+		});
+	};
+
+	const deleteMutate = useMutation({
+		mutationKey: ['todos'],
+		mutationFn: removeTodo,
+		onSuccess: () => {
+			queryClient.invalidateQueries({
+				queryKey: ['todos'],
+			});
+		},
+	});
+
+	const deleteTodoHandler = (id: string) => {
+		deleteMutate.mutate(id);
+	};
+
 	return (
-		<Container>
+		<Container $done={isDone}>
 			{title}
 			<ButtonContainer>
-				<DoneButton>{isDone ? '취소' : '완료'}</DoneButton>
-				<DeleteButton>삭제</DeleteButton>
+				<DoneButton
+					onClick={() => {
+						isDoneHandler(id);
+					}}
+				>
+					{isDone ? '취소' : '완료'}
+				</DoneButton>
+				<DeleteButton
+					onClick={() => {
+						deleteTodoHandler(id);
+					}}
+				>
+					삭제
+				</DeleteButton>
 			</ButtonContainer>
 		</Container>
 	);
@@ -15,15 +62,16 @@ const TodoItem = (props: { item: Todo }) => {
 
 export default TodoItem;
 
-const Container = styled.div`
+const Container = styled.div<{ $done: boolean }>`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	width: 50%;
 	padding: 15px;
 	margin: 15px;
-	border: 2px solid;
+	border: 3px solid;
 	border-radius: 12px;
+	border-color: ${(props) => (props.$done ? 'green' : 'red')};
 `;
 
 const ButtonContainer = styled.div`
