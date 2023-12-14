@@ -69,7 +69,7 @@ const Container = styled.div<{ $done: boolean }>`
 	width: 50%;
 	padding: 15px;
 	margin: 15px;
-	border: 3px solid;
+	border: 5px solid;
 	border-radius: 12px;
 	border-color: ${(props) => (props.$done ? 'green' : 'red')};
 `;
@@ -80,8 +80,17 @@ const ButtonContainer = styled.div`
 `;
 
 const DoneButton = styled.button`
-	font-size: 24px;
+	font-size: 20px;
 	padding: 12px;
+	border-radius: 12px;
+	border: none;
+	cursor: pointer;
+	background-color: black;
+	color: white;
+
+	&:hover {
+		background-color: #626f85
+	}
 `;
 
 const DeleteButton = styled(DoneButton)``;
