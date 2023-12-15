@@ -1,9 +1,9 @@
-import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { UseMutationResult, useMutation, useQueryClient } from '@tanstack/react-query';
 import styled from 'styled-components';
 import { removeTodo, updateTodo } from '../apis/todoApi';
 
 const TodoItem = (props: { item: Todo }) => {
-	const { id, title, isDone } = props.item;
+	const { id, title, content, isDone } = props.item;
 	const queryClient = useQueryClient();
 
 	const updateMutate = useMutation({
@@ -23,15 +23,16 @@ const TodoItem = (props: { item: Todo }) => {
 		});
 	};
 
-	const deleteMutate = useMutation({
-		mutationKey: ['todos'],
-		mutationFn: removeTodo,
-		onSuccess: () => {
-			queryClient.invalidateQueries({
-				queryKey: ['todos'],
-			});
-		},
-	});
+	const deleteMutate: UseMutationResult<Todo, Error, string, unknown> =
+		useMutation({
+			mutationKey: ['todos'],
+			mutationFn: removeTodo,
+			onSuccess: () => {
+				queryClient.invalidateQueries({
+					queryKey: ['todos'],
+				});
+			},
+		});
 
 	const deleteTodoHandler = (id: string): void => {
 		deleteMutate.mutate(id);
@@ -39,7 +40,8 @@ const TodoItem = (props: { item: Todo }) => {
 
 	return (
 		<Container $done={isDone}>
-			{title}
+			<TitleContainer>{title}</TitleContainer>
+			<ContentContainer>{content}</ContentContainer>
 			<ButtonContainer>
 				<DoneButton
 					onClick={() => {
@@ -66,12 +68,23 @@ const Container = styled.div<{ $done: boolean }>`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	flex-direction: column;
 	width: 50%;
 	padding: 15px;
 	margin: 15px;
 	border: 5px solid;
 	border-radius: 12px;
 	border-color: ${(props) => (props.$done ? 'green' : 'red')};
+`;
+
+const TitleContainer = styled.div`
+	font-size: 32px;
+	margin: 5px;
+`;
+
+const ContentContainer = styled.div`
+	font-size: 24px;
+	margin: 5px;
 `;
 
 const ButtonContainer = styled.div`

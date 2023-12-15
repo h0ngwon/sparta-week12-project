@@ -11,11 +11,22 @@ const Todos = () => {
 	});
 
 	return (
-		<Container>
-			{data?.map((item) => {
-				return <TodoItem key={item.id} item={item} />;
-			})}
-		</Container>
+		<>
+			<Container>
+				{data
+					?.filter((item: Todo) => item.isDone === false)
+					.map((item: Todo) => {
+						return <TodoItem key={item.id} item={item} />;
+					})}
+			</Container>
+			<DoneContainer>
+				{data
+					?.filter((item: Todo) => item.isDone === true)
+					.map((item: Todo) => {
+						return <TodoItem key={item.id} item={item} />;
+					})}
+			</DoneContainer>
+		</>
 	);
 };
 
@@ -26,8 +37,11 @@ const Container = styled.div`
 	flex-direction: column;
 	align-items: center;
 	width: 50vw;
-	height: 100%;
+	height: 50%;
 	border: 3px solid;
 	border-radius: 13px;
 	padding: 24px;
+    margin: 10px;
 `;
+
+const DoneContainer = styled(Container)``;
