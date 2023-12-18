@@ -1,41 +1,19 @@
-import { UseMutationResult, useMutation, useQueryClient } from '@tanstack/react-query';
 import styled from 'styled-components';
-import { removeTodo, updateTodo } from '../apis/todoApi';
+import useTodoQuery from '../hooks/useTodoQuery';
 
 const TodoItem = (props: { item: Todo }) => {
 	const { id, title, content, isDone } = props.item;
-	const queryClient = useQueryClient();
-
-	const updateMutate = useMutation({
-		mutationKey: ['todos'],
-		mutationFn: updateTodo,
-		onSuccess: () => {
-			queryClient.invalidateQueries({
-				queryKey: ['todos'],
-			});
-		},
-	});
+	const { updateTodo, removeTodo } = useTodoQuery();
 
 	const isDoneHandler = (id: string): void => {
-		updateMutate.mutate({
+		updateTodo.mutate({
 			...props.item,
 			isDone: !isDone,
 		});
 	};
 
-	const deleteMutate: UseMutationResult<Todo, Error, string, unknown> =
-		useMutation({
-			mutationKey: ['todos'],
-			mutationFn: removeTodo,
-			onSuccess: () => {
-				queryClient.invalidateQueries({
-					queryKey: ['todos'],
-				});
-			},
-		});
-
 	const deleteTodoHandler = (id: string): void => {
-		deleteMutate.mutate(id);
+		removeTodo.mutate(id);
 	};
 
 	return (

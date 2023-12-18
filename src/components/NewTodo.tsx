@@ -1,31 +1,17 @@
-import {
-	UseMutationResult,
-	useMutation,
-	useQueryClient,
-} from '@tanstack/react-query';
 import { FormEvent } from 'react';
 import styled from 'styled-components';
 import { v4 as uuid } from 'uuid';
-import { addTodo } from '../apis/todoApi';
 import useInput from '../hooks/useInput';
+import useTodoQuery from '../hooks/useTodoQuery';
 
 const NewTodo = () => {
-	const queryClient = useQueryClient();
 	const [newTodoTitle, titleHandler] = useInput<string>('');
 	const [newTodoContent, contentHandler] = useInput<string>('');
-
-	const addMutation: UseMutationResult<Todo, Error, Todo, unknown> =
-		useMutation({
-			mutationKey: ['todos'],
-			mutationFn: addTodo,
-			onSuccess: () => {
-				queryClient.invalidateQueries({ queryKey: ['todos'] });
-			},
-		});
+	const { addTodo } = useTodoQuery();
 
 	const submitHandler = (e: FormEvent): void => {
 		e.preventDefault();
-		addMutation.mutate({
+		addTodo.mutate({
 			id: uuid(),
 			title: newTodoTitle,
 			content: newTodoContent,

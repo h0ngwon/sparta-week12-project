@@ -1,26 +1,21 @@
-import { useQuery } from '@tanstack/react-query';
-import { AxiosError } from 'axios';
 import styled from 'styled-components';
-import { getTodoData } from '../apis/todoApi';
+import useTodoQuery from '../hooks/useTodoQuery';
 import TodoItem from './TodoItem';
 
 const Todos = () => {
-	const { data } = useQuery<Todo[], AxiosError>({
-		queryKey: ['todos'],
-		queryFn: getTodoData,
-	});
+	const { todos } = useTodoQuery();
 
 	return (
 		<>
 			<Container>
-				{data
+				{todos
 					?.filter((item: Todo) => item.isDone === false)
 					.map((item: Todo) => {
 						return <TodoItem key={item.id} item={item} />;
 					})}
 			</Container>
 			<DoneContainer>
-				{data
+				{todos
 					?.filter((item: Todo) => item.isDone === true)
 					.map((item: Todo) => {
 						return <TodoItem key={item.id} item={item} />;
@@ -41,7 +36,7 @@ const Container = styled.div`
 	border: 3px solid;
 	border-radius: 13px;
 	padding: 24px;
-    margin: 10px;
+	margin: 10px;
 `;
 
 const DoneContainer = styled(Container)``;
