@@ -1,9 +1,13 @@
 # 내일배움캠프 12주차 개인과제
 
-## 프로젝트명 : 타입스크립트 Todo-list<br/>
-## 프로젝트 내용 : 타입스크립트를 활용한 Todo-list 만들기<br/>
-## 개발 일정 : 2023.12.15 - 2023.12.15<br/>
-## 사용 스택 : <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white"/><img src='https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white'/><img src='https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white'/><img src='https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB'/><img src='https://img.shields.io/badge/React_Query-FF4154?style=for-the-badge&logo=React_Query&logoColor=white'/>
+## 프로젝트명 
+타입스크립트 Todo-list<br/>
+## 프로젝트 내용 
+타입스크립트를 활용한 Todo-list 만들기<br/>
+## 개발 일정
+2023.12.15 - 2023.12.15<br/>
+## 사용 스택
+<img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white"/><img src='https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white'/><img src='https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white'/><img src='https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB'/><img src='https://img.shields.io/badge/React_Query-FF4154?style=for-the-badge&logo=React_Query&logoColor=white'/>
 <br/>
 
 # 웹페이지 설명
