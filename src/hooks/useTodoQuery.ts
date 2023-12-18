@@ -34,7 +34,7 @@ const useTodoQuery = () => {
 		},
 	});
 
-	const deleteMutatation: UseMutationResult<Todo, Error, string, unknown> =
+	const removeMutatation: UseMutationResult<Todo, Error, string, unknown> =
 		useMutation({
 			mutationKey: ['todos'],
 			mutationFn: removeTodo,
@@ -49,7 +49,7 @@ const useTodoQuery = () => {
 		todos: data,
 		addTodo: addMutation,
 		updateTodo: updateMutatation,
-		removeTodo: deleteMutatation,
+		removeTodo: removeMutatation,
 	};
 };
 

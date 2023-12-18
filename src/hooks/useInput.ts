@@ -1,6 +1,6 @@
 import { ChangeEvent, useState } from 'react';
 
-const useInput = <T>(defaultValue: T): [T, (e : ChangeEvent<HTMLInputElement>) => void] => {
+const useInput = <T>(defaultValue: T): [T, (e : ChangeEvent<HTMLInputElement>) => void, () => void] => {
 	const [value, setValue] = useState<T>(defaultValue);
 
 	const changeHandler = (e: ChangeEvent<HTMLInputElement>)  => {
@@ -8,7 +8,11 @@ const useInput = <T>(defaultValue: T): [T, (e : ChangeEvent<HTMLInputElement>) =
 		setValue(e.target.value as T);
 	};
 
-	return [value, changeHandler];
+    const reset = () => {
+        setValue(defaultValue);
+    }
+
+	return [value, changeHandler, reset];
 };
 
 export default useInput;

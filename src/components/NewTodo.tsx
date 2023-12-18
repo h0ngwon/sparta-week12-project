@@ -5,8 +5,8 @@ import useInput from '../hooks/useInput';
 import useTodoQuery from '../hooks/useTodoQuery';
 
 const NewTodo = () => {
-	const [newTodoTitle, titleHandler] = useInput<string>('');
-	const [newTodoContent, contentHandler] = useInput<string>('');
+	const [newTodoTitle, titleHandler, titleReset] = useInput<string>('');
+	const [newTodoContent, contentHandler, contentReset] = useInput<string>('');
 	const { addTodo } = useTodoQuery();
 
 	const submitHandler = (e: FormEvent): void => {
@@ -17,6 +17,8 @@ const NewTodo = () => {
 			content: newTodoContent,
 			isDone: false,
 		});
+        titleReset();
+        contentReset();
 	};
 
 	return (
