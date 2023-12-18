@@ -3,12 +3,12 @@
     {
       "id": 3,
       "title": "할일3",
-      "isDone": true
+      "isDone": false
     },
     {
       "id": "ca44392c-142e-4b04-bf6e-2135ab2c5c20",
       "title": "테스트",
-      "isDone": true
+      "isDone": false
     },
     {
       "id": "169fba18-df1f-4739-ae00-2f80048f8f47",
@@ -16,21 +16,9 @@
       "isDone": true
     },
     {
-      "id": "c2adf2ec-682c-43ba-8422-e1558826764d",
-      "title": "할일5",
-      "content": "5",
-      "isDone": false
-    },
-    {
       "id": "71c49a78-0e60-4c37-9dcf-1b70fbc5085e",
       "title": "하이",
       "content": "하이",
-      "isDone": false
-    },
-    {
-      "id": "611ebbe8-6014-4147-b36d-d7582f69d2dd",
-      "title": "타입스크립트",
-      "content": "타입",
       "isDone": false
     }
   ]

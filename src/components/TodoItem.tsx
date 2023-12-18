@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import useTodoQuery from '../hooks/useTodoQuery';
+import Swal from 'sweetalert2';
 
 const TodoItem = (props: { item: Todo }) => {
 	const { id, title, content, isDone } = props.item;
@@ -13,7 +14,24 @@ const TodoItem = (props: { item: Todo }) => {
 	};
 
 	const deleteTodoHandler = (id: string): void => {
-		removeTodo.mutate(id);
+		Swal.fire({
+			title: '삭제하시겠습니까?',
+			text: '삭제된 투두리스트는 되돌릴 수 없습니다!',
+			icon: 'warning',
+			showCancelButton: true,
+			confirmButtonColor: '#3085d6',
+			cancelButtonColor: '#d33',
+			confirmButtonText: '삭제하기',
+			cancelButtonText: '취소',
+		}).then((result) => {
+			if (result.isConfirmed) {
+				Swal.fire({
+					title: '삭제되었습니다!',
+					icon: 'success',
+				});
+				removeTodo.mutate(id);
+			}
+		});
 	};
 
 	return (
