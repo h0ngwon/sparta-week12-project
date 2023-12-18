@@ -1,46 +1,31 @@
-# Getting Started with Create React App
+# 내일배움캠프 12주차 개인과제
+프로젝트명 : 타입스크립트 Todo-list<br/>
+프로젝트 내용 : 타입스크립트를 활용한 Todo-list 만들기<br/>
+개발 일정 : 2023.12.15 - 2023.12.15<br/>
+사용 스택 : <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white"/><img src='https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white'/><img src='https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white'/><img src='https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB'/><img src='https://img.shields.io/badge/React_Query-FF4154?style=for-the-badge&logo=React_Query&logoColor=white'/>
+<br/>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# 웹페이지 설명
 
-## Available Scripts
+## 메인페이지
+<img src='./public/assets/메인페이지.png'/>
 
-In the project directory, you can run:
+## 등록하기
+<img src='./public/assets/등록하기1.png/'>
+<img src='./public/assets/등록하기2.png/'>
 
-### `npm start`
+제목과 내용을 채워 투두리스트를 등록할 수 있다.
+Enter 혹은 등록하기 버튼을 클릭하여 등록할 수 있다.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 완료
+<img src='./public/assets/완료1.png/'>
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+완료 버튼 클릭 시 완료 버튼이 취소 버튼으로 바뀌고
+완료된 투두리스트는 화면 밑으로 따로 분리된다.
 
-### `npm test`
+## 삭제
+<img src='./public/assets/삭제1.png/'>
+<img src='./public/assets/삭제2.png/'>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+삭제 버튼 클릭 시 삭제하시겠습니까 경고창을 띄운다.
+경고창 안의 삭제하기 버튼을 클릭하면 투두리스트가 삭제된다.

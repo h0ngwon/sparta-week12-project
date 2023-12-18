@@ -12,12 +12,6 @@
       "isDone": false
     },
     {
-      "id": "2d4b4f12-c299-46bc-b611-b80e86b8d1c3",
-      "title": "타입스크립트",
-      "content": "타입스크립트",
-      "isDone": false
-    },
-    {
       "id": "cbe197e8-6ac4-445a-b3a8-07a53b9c2905",
       "title": "자바스크립트",
       "content": "자바스크립트",
@@ -28,6 +22,12 @@
       "title": "Next.js",
       "content": "Next.js",
       "isDone": true
+    },
+    {
+      "id": "8b089b81-78a0-4545-9df7-bac2d7fb9423",
+      "title": "등록하기",
+      "content": "등록하기",
+      "isDone": false
     }
   ]
 }
